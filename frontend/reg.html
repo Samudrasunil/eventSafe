@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Event Registration</h1>
+        <form id="registration-form">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" required>
+
+            <button type="submit">Register</button>
+        </form>
+        <p id="message"></p> <!-- This will display registration status -->
+    </div>
+
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const eventName = document.getElementById('event-name').value;
+
+            const data = { name, email, phone, event_name: eventName };
+
+            try {
+                // Send POST request to backend
+                const response = await fetch('http://127.0.0.1:5000/register-event', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Parse the JSON response from the server
+                const result = await response.json();
+
+                if (response.ok) {
+                    // If registration is successful, display the success message
+                    document.getElementById('message').textContent = `Registration successful! Welcome ${result.name}, you're registered for ${result.event_name}.`;
+                    document.getElementById('registration-form').reset(); // Reset form fields
+                } else {
+                    // If there's an error, display the error message
+                    document.getElementById('message').textContent = result.error || "Error registering, please try again.";
+                }
+            } catch (error) {
+                // Handle network or other errors
+                document.getElementById('message').textContent = "Error registering, please try again.";
+            }
+        });
+    </script>
+</body>
+</html>

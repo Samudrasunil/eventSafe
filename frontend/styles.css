@@ -1,0 +1,57 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Page Layout */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('images/f1.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    color: #333; /* Dark text for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Container for Content */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Button Styling */
+#panic-button {
+    background-color: #e74c3c; /* Red background for emergency */
+    color: white;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+#panic-button:hover {
+    background-color: #c0392b;
