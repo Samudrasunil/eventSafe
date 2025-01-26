@@ -1,5 +1,6 @@
 # eventSafe
 video link:https://imgur.com/a/9bSuPfe
+
 EventSafe is a web-based platform designed to enhance safety, registration, and event management. It features a Panic Button functionality for sending live location alerts, event registration integrated with a MySQL database, and an FAQ section for answering common queries.
 Features
 1. Panic Button with Live Location Tracking
